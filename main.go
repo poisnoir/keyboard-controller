@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"log/slog"
@@ -11,7 +12,7 @@ import (
 	"github.com/poisnoir/spine-go"
 )
 
-var ns *spine.Namespace
+var node *spine.Node
 var pub *spine.Publisher[[4][4]float64]
 
 type Game struct{}
@@ -78,12 +79,12 @@ func main() {
 
 	var err error
 
-	ns, err = spine.JointNamespace(*namespace, *key, logger)
+	node, err = spine.CreateNode(*namespace, *key, context.Background(), logger)
 	if err != nil {
 		panic(err)
 	}
 
-	pub, err = spine.NewPublisher[[4][4]float64](ns, *name)
+	pub, err = spine.NewPublisher[[4][4]float64](node, *name)
 	if err != nil {
 		panic(err)
 	}

@@ -9,7 +9,7 @@ import (
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
-	"github.com/poisnoir/spine-go"
+	"github.com/poisnoir/spine-go/client-go"
 )
 
 var node *spine.Node
